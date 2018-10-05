@@ -79,7 +79,7 @@ public class Sudoku {
     }
 
     /**
-     * La méthode prend un tableau de coordonnées de chiffre soud la forme XYZ avec X correspondant
+     * La méthode prend un tableau de coordonnées de chiffre sous la forme XYZ avec X correspondant
      * à l'abscisse, Y l'ordonnée et Z la valeur et remplit le tableau sudokuAResoudre avec les bonnes valeurs
      * au bon endroit. Ex 012, première ligne deuxième colonne, on met la valeur 2. Lorsqu'une valeur nulle est
      * rencontrée dans le tableau, on arrête le traitement
@@ -89,9 +89,31 @@ public class Sudoku {
      * @param tableauCoordonnees
      */
     public void remplitSudokuATrous(String[] tableauCoordonnees) {
+        /*Définir ligne colonne et valeur
+        Parcourir le tableauCoordonnees
+        Pour chacune de ces valeurs extraire ligne colonne et valeur
+        mettre la valeur au bon endroit dans SudokuAResoudre
+        sudokuAResoudre[ligne][colonne] = valeur;
+         */
+        int i=0;
+        int ligne;
+        int colonne;
+        short valeur;
+        while (i<tableauCoordonnees.length && tableauCoordonnees[i]!=null)
+         {
+            ligne = stringToInt( tableauCoordonnees[i].substring(0 , 1));
+            colonne = stringToInt(tableauCoordonnees[i].substring(1 , 2));
+            valeur = stringToShort(tableauCoordonnees[i].substring(2 ,3));
+            sudokuAResoudre[ligne][colonne] = valeur;
+            i++;
+        }
+
+
 
     }
-
+    private short stringToShort(String s) {
+        return Short.parseShort(s);
+    }
     private int stringToInt(String s) {
         return Integer.parseInt(s);
     }
